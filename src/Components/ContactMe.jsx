@@ -33,16 +33,17 @@ const sendEmail = async (e) => {
 
   try {
     await emailjs.send(
-      'service_iu0bf2c',
-      'template_if15v9p',
-      {
-        name: formData.name,
-        email: formData.email,
-        subject: formData.subject,
-        message: formData.message
-      },
-      'IH3yyUPcH6eJu2bqe'
-    );
+  import.meta.env.VITE_EMAILJS_SERVICE_ID,
+  import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+  {
+    name: formData.name,
+    email: formData.email,
+    subject: formData.subject,
+    message: formData.message
+  },
+  import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+);
+
 
     setFormStatus('success');
     setFormData({ name: '', email: '', subject: '', message: '' });
