@@ -118,10 +118,10 @@ const Projects = () => {
 
   const getStatusColor = (status) => {
     switch (status) {
-      case 'completed': return 'bg-green-100 text-green-800';
-      case 'in-progress': return 'bg-yellow-100 text-yellow-800';
-      case 'planning': return 'bg-blue-100 text-blue-800';
-      default: return 'bg-gray-100 text-gray-800';
+      case 'completed': return 'bg-zinc-100 text-zinc-800 border-zinc-200 dark:bg-zinc-800 dark:text-white dark:border-zinc-700';
+      case 'in-progress': return 'bg-zinc-50 text-zinc-500 border-zinc-200 dark:bg-zinc-900 dark:text-zinc-400 dark:border-zinc-800';
+      case 'planning': return 'bg-zinc-50 text-zinc-400 border-zinc-200 dark:bg-zinc-950 dark:text-zinc-500 dark:border-zinc-900';
+      default: return 'bg-zinc-50 text-zinc-500 border-zinc-200 dark:bg-zinc-900 dark:text-zinc-400 dark:border-zinc-800';
     }
   };
 
@@ -139,39 +139,39 @@ const Projects = () => {
     
     return (
       <div
-        className={`group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:-translate-y-2 ${
+        className={`group relative bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-900 rounded-2xl shadow-lg hover:shadow-2xl hover:border-zinc-300 dark:hover:border-zinc-800 transition-all duration-500 overflow-hidden transform hover:-translate-y-2 ${
           featured ? 'lg:col-span-1' : ''
         }`}
         style={{ animationDelay: `${index * 150}ms` }}
         onMouseEnter={() => setHoveredProject(project.id)}
         onMouseLeave={() => setHoveredProject(null)}
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-zinc-200/20 to-zinc-100/10 dark:from-zinc-800/10 dark:to-zinc-700/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
         
-        <div className="relative h-48 bg-gradient-to-br from-purple-100 to-blue-100 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 to-blue-600/20"></div>
+        <div className="relative h-48 bg-zinc-100 dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-900 overflow-hidden">
+          <div className="absolute inset-0 bg-zinc-100/40 dark:bg-zinc-950/40"></div>
           <div className="absolute top-4 left-4">
-            <CardIcon className="text-2xl text-purple-600" />
+            <CardIcon className="text-2xl text-zinc-700 dark:text-white" />
           </div>
           <div className="absolute top-4 right-4">
-            <span className={`px-3 py-1 rounded-full text-xs font-medium ${getStatusColor(project.status)}`}>
+            <span className={`px-3 py-1 rounded-full text-xs font-mono font-medium ${getStatusColor(project.status)}`}>
               {getStatusText(project.status)}
             </span>
           </div>
           <div className="absolute bottom-4 left-4 right-4">
-            <div className="bg-white/90 backdrop-blur-sm rounded-lg p-3">
-              <h3 className="font-bold text-gray-800 text-lg line-clamp-2">{project.title}</h3>
+            <div className="bg-white/90 dark:bg-zinc-900/90 backdrop-blur-sm rounded-lg p-3 border border-zinc-200 dark:border-zinc-800">
+              <h3 className="font-bold text-zinc-900 dark:text-white text-lg line-clamp-2">{project.title}</h3>
             </div>
           </div>
         </div>
 
         <div className="p-6">
-          <p className="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-3">
+          <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed mb-4 line-clamp-3">
             {project.description}
           </p>
 
           <div className="mb-4">
-            <span className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2 block">
+            <span className="text-xs font-semibold text-zinc-400 dark:text-zinc-500 font-mono uppercase tracking-wide mb-2 block">
               Tech Stack
             </span>
             <div className="flex flex-wrap gap-2">
@@ -180,9 +180,9 @@ const Projects = () => {
                 return (
                   <div
                     key={i}
-                    className="flex items-center space-x-1 bg-gray-50 hover:bg-purple-50 px-3 py-1 rounded-full text-xs font-medium text-gray-700 hover:text-purple-600 transition-colors duration-200"
+                    className="flex items-center space-x-1 bg-zinc-100 hover:bg-zinc-200 border border-zinc-200 dark:bg-zinc-950 dark:hover:bg-zinc-900 dark:border-zinc-900 dark:hover:border-zinc-800 px-3 py-1 rounded-lg text-xs font-mono font-medium text-zinc-700 dark:text-zinc-300 dark:hover:text-white transition-colors duration-200"
                   >
-                    {TechIcon && <TechIcon className="text-sm" />}
+                    {TechIcon && <TechIcon className="text-xs" />}
                     <span>{tech}</span>
                   </div>
                 );
@@ -191,64 +191,63 @@ const Projects = () => {
           </div>
 
           {project.status === 'completed' ? (
-            <div className="relative z-10 flex flex-wrap gap-3">
-  {project.github && (
-    <a
-      href={project.github}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="flex items-center space-x-2 text-gray-600 hover:text-gray-800 transition-colors group/link"
-    >
-      <FaGithub className="group-hover/link:scale-110 transition-transform" />
-      <span className="text-sm font-medium">Code</span>
-    </a>
-  )}
+            <div className="relative z-10 flex flex-wrap gap-3 items-center">
+              {project.github && (
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors group/link font-mono text-xs"
+                >
+                  <FaGithub className="group-hover/link:scale-110 transition-transform" />
+                  <span className="font-medium">Code</span>
+                </a>
+              )}
 
-  {project.githubFrontend && (
-    <a
-      href={project.githubFrontend}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="flex items-center space-x-2 text-blue-600 hover:text-blue-800 transition-colors group/link"
-    >
-      <FaCode className="group-hover/link:scale-110 transition-transform" />
-      <span className="text-sm font-medium">Frontend</span>
-    </a>
-  )}
+              {project.githubFrontend && (
+                <a
+                  href={project.githubFrontend}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors group/link font-mono text-xs"
+                >
+                  <FaCode className="group-hover/link:scale-110 transition-transform" />
+                  <span className="font-medium">Frontend</span>
+                </a>
+              )}
 
-  {project.githubBackend && (
-    <a
-      href={project.githubBackend}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="flex items-center space-x-2 text-green-600 hover:text-green-800 transition-colors group/link"
-    >
-      <FaDatabase className="group-hover/link:scale-110 transition-transform" />
-      <span className="text-sm font-medium">Backend</span>
-    </a>
-  )}
+              {project.githubBackend && (
+                <a
+                  href={project.githubBackend}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors group/link font-mono text-xs"
+                >
+                  <FaDatabase className="group-hover/link:scale-110 transition-transform" />
+                  <span className="font-medium">Backend</span>
+                </a>
+              )}
 
-  {project.live && (
-    <a
-      href={project.live}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="flex items-center space-x-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:shadow-lg transform hover:scale-105 transition-all duration-300 group/link ml-auto"
-    >
-      <FaEye className="group-hover/link:scale-110 transition-transform" />
-      <span>Live Demo</span>
-      <FaArrowRight className="group-hover/link:translate-x-1 transition-transform" />
-    </a>
-  )}
-</div>
-
+              {project.live && (
+                <a
+                  href={project.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 bg-zinc-900 text-white hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200 px-4 py-2 rounded-lg text-sm font-mono font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300 group/link ml-auto cursor-pointer"
+                >
+                  <FaEye className="group-hover/link:scale-110 transition-transform" />
+                  <span>Live Demo</span>
+                  <FaArrowRight className="group-hover/link:translate-x-1 transition-transform" />
+                </a>
+              )}
+            </div>
           ) : (
             <div className="flex items-center justify-center py-4">
-              <div className="flex items-center space-x-2 text-gray-500">
-                <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
-                <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse animation-delay-200"></div>
-                <div className="w-2 h-2 bg-pink-400 rounded-full animate-pulse animation-delay-400"></div>
-                <span className="text-sm font-medium ml-2">
+              <div className="flex items-center space-x-2 text-zinc-400 dark:text-zinc-500">
+                <div className="w-2 h-2 bg-zinc-300 dark:bg-zinc-700 rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-zinc-400 dark:bg-zinc-600 rounded-full animate-pulse animation-delay-200"></div>
+                <div className="w-2 h-2 bg-zinc-500 dark:bg-zinc-500 rounded-full animate-pulse animation-delay-400"></div>
+                <span className="text-sm font-mono font-medium ml-2">
                   {project.status === 'in-progress' ? 'Under Development' : 'Coming Soon'}
                 </span>
               </div>
@@ -260,14 +259,14 @@ const Projects = () => {
   };
 
   return (
-    <div className="bg-gradient-to-br from-gray-50 via-white to-purple-50 min-h-screen py-16 px-6">
+    <div className="bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 min-h-screen py-16 px-6 relative transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-4">
+          <h1 className="text-5xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white mb-4">
             <br></br>
-            My Projects
+            My Projects_
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-zinc-600 dark:text-zinc-400 max-w-3xl mx-auto leading-relaxed">
             Explore my journey through code - from full-stack applications to mobile apps and everything in between.
             Each project represents a step forward in my development journey.
           </p>

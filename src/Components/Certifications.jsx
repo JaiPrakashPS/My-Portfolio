@@ -29,8 +29,8 @@ const certifications = [
     skills: ["Java", "OOP", "Collections", "Multithreading"],
     description: "Comprehensive Java programming course covering fundamentals to advanced concepts including object-oriented programming, data structures, and enterprise development.",
     icon: Code,
-    color: "from-orange-400 to-red-500",
-    bgColor: "from-orange-50 to-red-50",
+    color: "from-zinc-800 to-zinc-900",
+    bgColor: "from-zinc-90 to-zinc-95",
     verified: true,
     completionDate: "2024",
   },
@@ -45,8 +45,8 @@ const certifications = [
     skills: ["Java Fundamentals", "Problem Solving", "Coding Practice"],
     description: "Hands-on Java programming course with practical exercises and real-world problem solving to build strong foundational skills.",
     icon: Code,
-    color: "from-blue-400 to-indigo-500",
-    bgColor: "from-blue-50 to-indigo-50",
+    color: "from-zinc-800 to-zinc-900",
+    bgColor: "from-zinc-90 to-zinc-95",
     verified: true,
     completionDate: "2024",
   },
@@ -61,8 +61,8 @@ const certifications = [
     skills: ["Data Structures", "Algorithms", "C/C++", "Problem Solving"],
     description: "In-depth coverage of data structures and algorithms implementation using C and C++, essential for competitive programming and technical interviews.",
     icon: Brain,
-    color: "from-green-400 to-teal-500",
-    bgColor: "from-green-50 to-teal-50",
+    color: "from-zinc-800 to-zinc-900",
+    bgColor: "from-zinc-90 to-zinc-95",
     verified: true,
     completionDate: "2024",
   },
@@ -77,8 +77,8 @@ const certifications = [
     skills: ["UI/UX Design", "Figma", "Prototyping", "User Research"],
     description: "Complete UI/UX design course covering user research, wireframing, prototyping, and modern design principles using Figma.",
     icon: Palette,
-    color: "from-purple-400 to-pink-500",
-    bgColor: "from-purple-50 to-pink-50",
+    color: "from-zinc-800 to-zinc-900",
+    bgColor: "from-zinc-90 to-zinc-95",
     verified: true,
     completionDate: "2024",
   },
@@ -93,8 +93,8 @@ const certifications = [
     skills: ["Python", "Pandas", "NumPy", "Data Analysis", "Machine Learning"],
     description: "Comprehensive Python course for data science covering data manipulation, analysis, visualization, and introduction to machine learning.",
     icon: Database,
-    color: "from-cyan-400 to-blue-500",
-    bgColor: "from-cyan-50 to-blue-50",
+    color: "from-zinc-800 to-zinc-900",
+    bgColor: "from-zinc-90 to-zinc-95",
     verified: true,
     completionDate: "2024",
   },
@@ -120,31 +120,31 @@ const Certifications = () => {
     const isExpanded = expandedCard === certification.id;
 
     return (
-      <div className="relative bg-gradient-to-br rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all border border-white/50 bg-white">
+      <div className="relative bg-white dark:bg-zinc-900/30 border border-zinc-200 dark:border-zinc-900 hover:border-zinc-300 dark:hover:border-zinc-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
         {certification.verified && (
           <div className="absolute top-4 right-4 z-10">
-            <div className="bg-green-500 text-white p-1 rounded-full">
-              <CheckCircle size={16} />
+            <div className="bg-zinc-900 text-white dark:bg-white dark:text-black p-1 rounded-full border border-zinc-200 dark:border-zinc-800">
+              <CheckCircle size={14} />
             </div>
           </div>
         )}
 
-        <div className={`p-6 bg-gradient-to-r ${certification.color}`}>
+        <div className="p-6 bg-zinc-100/80 dark:bg-zinc-900/60 border-b border-zinc-200 dark:border-zinc-900">
           <div className="flex items-start space-x-3">
-            <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
-              <CertIcon className="text-white" size={20} />
+            <div className="w-12 h-12 bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl flex items-center justify-center">
+              <CertIcon className="text-zinc-700 dark:text-white" size={20} />
             </div>
             <div>
-              <div className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-white/20 text-white mb-2">
+              <div className="inline-flex items-center px-2 py-1 rounded-full text-xs font-mono font-medium bg-white border border-zinc-200 dark:bg-zinc-950 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 mb-2">
                 {certification.platform}
               </div>
-              <h3 className="text-white font-bold text-lg leading-tight">
+              <h3 className="text-zinc-900 dark:text-white font-bold font-mono text-lg leading-tight">
                 {certification.title}
               </h3>
             </div>
           </div>
 
-          <div className="flex items-center justify-between mt-4 text-white/80 text-sm">
+          <div className="flex items-center justify-between mt-4 text-zinc-500 dark:text-zinc-400 text-xs font-mono">
             <div className="flex items-center space-x-4">
               <span className="flex items-center">
                 <Calendar size={14} className="mr-1" />
@@ -155,43 +155,43 @@ const Certifications = () => {
                 {certification.duration}
               </span>
             </div>
-            <div className="text-white font-medium">{certification.level}</div>
+            <div className="text-zinc-700 dark:text-zinc-300 font-medium">{certification.level}</div>
           </div>
         </div>
 
         <div className="p-6">
           <div className="flex items-center justify-between mb-4">
             <span
-              className={`px-3 py-1 bg-gradient-to-r ${certification.color} text-white text-xs rounded-full font-medium`}
+              className="px-3 py-1 bg-zinc-100 border border-zinc-200 text-zinc-700 dark:bg-white/10 dark:text-white dark:border-white/10 text-xs font-mono rounded-full font-medium"
             >
               {certification.category}
             </span>
-            <button onClick={() => toggleExpand(certification.id)} className="text-gray-400 hover:text-gray-600">
+            <button onClick={() => toggleExpand(certification.id)} className="text-zinc-400 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white cursor-pointer">
               <ChevronRight className={`transition-transform ${isExpanded ? "rotate-90" : ""}`} size={16} />
             </button>
           </div>
 
-          <p className="text-gray-600 text-sm mb-4">{certification.description}</p>
+          <p className="text-zinc-600 dark:text-zinc-400 text-sm mb-4 leading-relaxed">{certification.description}</p>
 
           <div className="flex flex-wrap gap-2 mb-4">
             {certification.skills.slice(0, 3).map((skill, idx) => (
-              <span key={idx} className="px-2 py-1 bg-white/70 text-gray-700 text-xs rounded-md font-medium">
+              <span key={idx} className="px-2 py-1 bg-zinc-100 border border-zinc-200 dark:bg-zinc-950 dark:border-zinc-900 text-zinc-700 dark:text-zinc-300 text-xs font-mono rounded-md font-medium">
                 {skill}
               </span>
             ))}
             {certification.skills.length > 3 && (
-              <span className="px-2 py-1 bg-gray-100 text-gray-500 text-xs rounded-md font-medium">
+              <span className="px-2 py-1 bg-zinc-50 border border-zinc-150 text-zinc-400 dark:bg-zinc-900 dark:text-zinc-500 text-xs font-mono rounded-md font-medium">
                 +{certification.skills.length - 3} more
               </span>
             )}
           </div>
 
           {isExpanded && (
-            <div className="pt-4 border-t border-gray-200">
-              <h4 className="font-semibold text-gray-800 mb-2">All Skills Covered:</h4>
+            <div className="pt-4 border-t border-zinc-200 dark:border-zinc-900 animate-fadeIn">
+              <h4 className="font-semibold text-zinc-800 dark:text-white font-mono text-sm mb-2">All Skills Covered:</h4>
               <div className="flex flex-wrap gap-2 mb-4">
                 {certification.skills.map((skill, idx) => (
-                  <span key={idx} className="px-2 py-1 bg-white/70 text-gray-700 text-xs rounded-md font-medium">
+                  <span key={idx} className="px-2 py-1 bg-zinc-100 border border-zinc-200 dark:bg-zinc-950 dark:border-zinc-900 text-zinc-700 dark:text-zinc-300 text-xs font-mono rounded-md font-medium">
                     {skill}
                   </span>
                 ))}
@@ -203,7 +203,7 @@ const Certifications = () => {
             href={certification.link}
             target="_blank"
             rel="noopener noreferrer"
-            className={`inline-flex items-center w-full justify-center px-4 py-2 bg-gradient-to-r ${certification.color} text-white text-sm font-medium rounded-lg hover:shadow-lg`}
+            className="inline-flex items-center w-full justify-center px-4 py-2 bg-zinc-900 text-white hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200 text-sm font-mono font-bold rounded-lg hover:shadow-lg transition-all cursor-pointer"
           >
             <Eye size={16} className="mr-2" />
             View Certificate
@@ -215,32 +215,32 @@ const Certifications = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-purple-50 py-16 px-6">
+    <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 py-16 px-6 font-sans relative transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mb-6">
-            <Award className="text-white text-2xl" size={28} />
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-zinc-100 border border-zinc-200 dark:bg-zinc-900 dark:border-zinc-800 rounded-full mb-6">
+            <Award className="text-zinc-700 dark:text-white text-2xl" size={28} />
           </div>
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
-            Professional Certifications
+          <h1 className="text-5xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white mb-4">
+            Professional Certifications_
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-zinc-600 dark:text-zinc-400 max-w-3xl mx-auto leading-relaxed">
             Continuous learning through industry-recognized courses and certifications that enhance my technical expertise.
           </p>
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-center mb-8 space-y-4 md:space-y-0">
           <div className="flex items-center space-x-2">
-            <Filter size={16} className="text-gray-500" />
-            <div className="flex space-x-1 bg-white rounded-lg p-1 shadow-md">
+            <Filter size={16} className="text-zinc-500" />
+            <div className="flex space-x-1 bg-zinc-100 border border-zinc-200 dark:bg-zinc-900 dark:border-zinc-800 rounded-lg p-1 shadow-md">
               {categories.map((category) => (
                 <button
                   key={category}
                   onClick={() => setFilterCategory(category)}
-                  className={`px-3 py-1 rounded-md text-sm font-medium capitalize ${
+                  className={`px-3 py-1 rounded-md text-sm font-mono font-medium capitalize cursor-pointer transition-all ${
                     filterCategory === category
-                      ? "bg-purple-600 text-white"
-                      : "text-gray-600 hover:text-purple-600"
+                      ? "bg-zinc-900 text-white dark:bg-white dark:text-black font-bold"
+                      : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
                   }`}
                 >
                   {category}
@@ -250,17 +250,17 @@ const Certifications = () => {
           </div>
 
           <div className="flex items-center space-x-2">
-            <span className="text-sm text-gray-500">View:</span>
-            <div className="flex space-x-1 bg-white rounded-lg p-1 shadow-md">
+            <span className="text-sm text-zinc-500 font-mono">View:</span>
+            <div className="flex space-x-1 bg-zinc-100 border border-zinc-200 dark:bg-zinc-900 dark:border-zinc-800 rounded-lg p-1 shadow-md">
               <button
                 onClick={() => setViewMode("grid")}
-                className={`p-2 rounded-md ${viewMode === "grid" ? "bg-purple-600 text-white" : "text-gray-600"}`}
+                className={`p-2 rounded-md cursor-pointer transition-all ${viewMode === "grid" ? "bg-zinc-900 text-white dark:bg-white dark:text-black" : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"}`}
               >
                 <Grid size={16} />
               </button>
               <button
                 onClick={() => setViewMode("list")}
-                className={`p-2 rounded-md ${viewMode === "list" ? "bg-purple-600 text-white" : "text-gray-600"}`}
+                className={`p-2 rounded-md cursor-pointer transition-all ${viewMode === "list" ? "bg-zinc-900 text-white dark:bg-white dark:text-black" : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"}`}
               >
                 <List size={16} />
               </button>
@@ -275,12 +275,12 @@ const Certifications = () => {
         </div>
 
         <div className="mt-16 text-center">
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-r from-green-500 to-blue-500 rounded-full mb-4">
-              <Star className="text-white" size={20} />
+          <div className="bg-white dark:bg-zinc-900/30 border border-zinc-200 dark:border-zinc-900 rounded-2xl p-8 shadow-lg">
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-zinc-50 border border-zinc-200 dark:bg-zinc-950 dark:border-zinc-800 rounded-full mb-4">
+              <Star className="text-zinc-700 dark:text-white" size={20} />
             </div>
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Continuous Learning Journey</h3>
-            <p className="text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            <h3 className="text-2xl font-bold text-zinc-900 dark:text-white mb-4 font-mono">Continuous Learning Journey_</h3>
+            <p className="text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto leading-relaxed">
               These certifications represent my commitment to staying current with technology trends and 
               continuously expanding my skill set. Each course has contributed to my professional growth and expertise.
             </p>

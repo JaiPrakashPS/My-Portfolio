@@ -19,7 +19,7 @@ import {
 const skillsData = {
   "Programming Languages": {
     icon: Code,
-    color: "from-blue-500 to-purple-600",
+    color: "from-zinc-800 to-zinc-900",
     skills: [
       { name: "C", icon: Code, level: 80, description: "System programming & algorithms" },
       { name: "C++", icon: Code, level: 80, description: "Object-oriented programming" },
@@ -30,7 +30,7 @@ const skillsData = {
   },
   "Frontend Technologies": {
     icon: Smartphone,
-    color: "from-cyan-500 to-blue-500",
+    color: "from-zinc-800 to-zinc-900",
     skills: [
       { name: "HTML5", icon: FileText, level: 95, description: "Semantic markup & accessibility" },
       { name: "CSS3", icon: Palette, level: 90, description: "Modern styling & animations" },
@@ -41,7 +41,7 @@ const skillsData = {
   },
   "Backend Technologies": {
     icon: Server,
-    color: "from-green-500 to-emerald-600",
+    color: "from-zinc-800 to-zinc-900",
     skills: [
       { name: "Node.js", icon: Server, level: 90, description: "Server-side JavaScript runtime" },
       { name: "Express.js", icon: Server, level: 88, description: "Web application framework" }
@@ -49,7 +49,7 @@ const skillsData = {
   },
   "Development Tools": {
     icon: Settings,
-    color: "from-orange-500 to-red-500",
+    color: "from-zinc-800 to-zinc-900",
     skills: [
       { name: "VS Code", icon: Code, level: 95, description: "Primary code editor" },
       { name: "Git", icon: GitBranch, level: 90, description: "Version control system" },
@@ -61,7 +61,7 @@ const skillsData = {
   },
   "Databases & Cloud": {
     icon: Database,
-    color: "from-purple-500 to-pink-500",
+    color: "from-zinc-800 to-zinc-900",
     skills: [
       { name: "MySQL", icon: Database, level: 80, description: "Relational database management" },
       { name: "MongoDB", icon: Database, level: 90, description: "NoSQL document database" },
@@ -70,7 +70,7 @@ const skillsData = {
   },
   "Core Concepts": {
     icon: Brain,
-    color: "from-indigo-500 to-purple-600",
+    color: "from-zinc-800 to-zinc-900",
     skills: [
       { name: "Data Structures & Algorithms", icon: Code, level: 70, description: "Problem-solving & optimization" },
       { name: "Object Oriented Programming", icon: Code, level: 65, description: "Design patterns & architecture" }
@@ -98,10 +98,10 @@ const Skills = () => {
   };
 
   const getSkillColor = (level) => {
-    if (level >= 90) return "from-green-400 to-emerald-500";
-    if (level >= 80) return "from-blue-400 to-cyan-500";
-    if (level >= 70) return "from-yellow-400 to-orange-500";
-    return "from-gray-400 to-gray-500";
+    if (level >= 90) return "from-zinc-800 to-zinc-500 dark:from-white dark:to-zinc-400";
+    if (level >= 80) return "from-zinc-700 to-zinc-400 dark:from-zinc-200 dark:to-zinc-500";
+    if (level >= 70) return "from-zinc-600 to-zinc-400 dark:from-zinc-400 dark:to-zinc-600";
+    return "from-zinc-500 to-zinc-300 dark:from-zinc-600 dark:to-zinc-800";
   };
 
   const SkillBar = ({ skill, index, categoryColor }) => {
@@ -109,7 +109,7 @@ const Skills = () => {
     
     return (
       <div 
-        className={`group relative bg-white rounded-xl p-4 shadow-md hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1 ${
+        className={`group relative bg-white dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl p-4 shadow-md hover:shadow-xl hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-500 transform hover:-translate-y-1 ${
           isVisible ? 'animate-slideInUp' : 'opacity-0'
         }`}
         style={{ animationDelay: `${index * 100}ms` }}
@@ -118,22 +118,22 @@ const Skills = () => {
       >
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center space-x-3">
-            <div className={`p-2 rounded-lg bg-gradient-to-r ${categoryColor}`}>
-              <SkillIcon className="text-white text-lg" size={18} />
+            <div className="p-2 rounded-lg bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800">
+              <SkillIcon className="text-zinc-700 dark:text-white text-lg" size={18} />
             </div>
             <div>
-              <h4 className="font-semibold text-gray-800 group-hover:text-purple-600 transition-colors">
+              <h4 className="font-semibold text-zinc-900 dark:text-white group-hover:text-zinc-600 dark:group-hover:text-zinc-300 transition-colors font-mono">
                 {skill.name}
               </h4>
-              <p className="text-xs text-gray-500">{skill.description}</p>
+              <p className="text-xs text-zinc-500 dark:text-zinc-400">{skill.description}</p>
             </div>
           </div>
           <div className="text-right">
-            <span className="text-lg font-bold text-gray-700">{skill.level}%</span>
+            <span className="text-lg font-bold text-zinc-700 dark:text-zinc-300 font-mono">{skill.level}%</span>
           </div>
         </div>
         
-        <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+        <div className="w-full bg-zinc-200 dark:bg-zinc-950 border border-zinc-150 dark:border-zinc-900 rounded-full h-2 overflow-hidden">
           <div 
             className={`h-full bg-gradient-to-r ${getSkillColor(skill.level)} rounded-full transition-all duration-1000 ease-out transform origin-left`}
             style={{ 
@@ -144,7 +144,7 @@ const Skills = () => {
         </div>
         
         {hoveredSkill === skill.name && (
-          <div className="absolute -top-2 -right-2 bg-purple-600 text-white text-xs px-2 py-1 rounded-full animate-pulse">
+          <div className="absolute -top-2 -right-2 bg-zinc-900 text-white dark:bg-white dark:text-black text-xs font-mono px-2 py-1 rounded-full animate-pulse">
             Expert
           </div>
         )}
@@ -153,14 +153,14 @@ const Skills = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-purple-50 px-6 py-16">
+    <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 px-6 py-16 font-sans relative transition-colors duration-300">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-4">
+          <h1 className="text-5xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white mb-4">
             <br></br>
-            Technical Skills
+            Technical Skills_
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-zinc-600 dark:text-zinc-400 max-w-3xl mx-auto leading-relaxed">
             A comprehensive overview of my technical expertise and proficiency levels across various technologies and tools.
           </p>
         </div>
@@ -173,38 +173,38 @@ const Skills = () => {
             return (
               <div 
                 key={category} 
-                className={`bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg overflow-hidden transition-all duration-500 ${
+                className={`bg-white dark:bg-zinc-900/30 border border-zinc-200 dark:border-zinc-900 hover:border-zinc-300 dark:hover:border-zinc-800 rounded-2xl shadow-lg overflow-hidden transition-all duration-500 ${
                   isVisible ? 'animate-fadeInUp' : 'opacity-0'
                 }`}
                 style={{ animationDelay: `${categoryIndex * 200}ms` }}
               >
                 <div 
-                  className={`p-6 bg-gradient-to-r ${data.color} cursor-pointer select-none`}
+                  className="p-6 bg-zinc-100/80 dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800 cursor-pointer select-none"
                   onClick={() => toggleCategory(category)}
                 >
-                  <div className="flex items-center justify-between text-white">
+                  <div className="flex items-center justify-between text-zinc-900 dark:text-white">
                     <div className="flex items-center space-x-4">
-                      <CategoryIcon className="text-2xl" size={24} />
+                      <CategoryIcon className="text-2xl text-zinc-700 dark:text-white" size={24} />
                       <div>
-                        <h2 className="text-2xl font-bold">{category}</h2>
-                        <p className="text-white/80 text-sm">
+                        <h2 className="text-2xl font-bold font-mono">{category}</h2>
+                        <p className="text-zinc-500 dark:text-zinc-400 font-mono text-xs">
                           {data.skills.length} skill{data.skills.length !== 1 ? 's' : ''}
                         </p>
                       </div>
                     </div>
                     <div className="flex items-center space-x-2">
-                      <div className="text-right">
-                        <div className="text-sm opacity-80">Avg. Proficiency</div>
-                        <div className="text-lg font-bold">
+                      <div className="text-right mr-2">
+                        <div className="text-xs text-zinc-500 dark:text-zinc-400 font-mono">Avg. Proficiency</div>
+                        <div className="text-lg font-bold font-mono text-zinc-900 dark:text-white">
                           {Math.round(data.skills.reduce((sum, skill) => sum + skill.level, 0) / data.skills.length)}%
                         </div>
                       </div>
-                      {isExpanded ? <ChevronUp className="text-xl" size={20} /> : <ChevronDown className="text-xl" size={20} />}
+                      {isExpanded ? <ChevronUp className="text-xl text-zinc-500 dark:text-zinc-400" size={20} /> : <ChevronDown className="text-xl text-zinc-500 dark:text-zinc-400" size={20} />}
                     </div>
                   </div>
                 </div>
                 
-                <div className={`transition-all duration-500 ease-in-out ${
+                <div className={`transition-all duration-500 ease-in-out overflow-hidden ${
                   isExpanded ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
                 }`}>
                   <div className="p-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -224,52 +224,20 @@ const Skills = () => {
         </div>
 
         <div className="mt-16 text-center">
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Continuous Learning</h3>
-            <p className="text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          <div className="bg-white dark:bg-zinc-900/30 border border-zinc-200 dark:border-zinc-900 rounded-2xl p-8 shadow-lg">
+            <h3 className="text-2xl font-bold text-zinc-900 dark:text-white mb-4 font-mono">Continuous Learning_</h3>
+            <p className="text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto leading-relaxed">
               I'm always eager to learn new technologies and improve my existing skills. 
               Currently exploring advanced topics in AI/ML, cloud computing, and modern web frameworks.
             </p>
             <div className="flex justify-center mt-6 space-x-2">
-              <div className="w-3 h-3 bg-purple-400 rounded-full animate-bounce"></div>
-              <div className="w-3 h-3 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '200ms' }}></div>
-              <div className="w-3 h-3 bg-pink-400 rounded-full animate-bounce" style={{ animationDelay: '400ms' }}></div>
+              <div className="w-3 h-3 bg-zinc-400 dark:bg-zinc-600 rounded-full animate-bounce"></div>
+              <div className="w-3 h-3 bg-zinc-500 dark:bg-zinc-500 rounded-full animate-bounce" style={{ animationDelay: '200ms' }}></div>
+              <div className="w-3 h-3 bg-zinc-600 dark:bg-zinc-400 rounded-full animate-bounce" style={{ animationDelay: '400ms' }}></div>
             </div>
           </div>
         </div>
       </div>
-{/* 
-      <style jsx>{`
-        @keyframes slideInUp {
-          from {
-            opacity: 0;
-            transform: translateY(40px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        .animate-slideInUp {
-          animation: slideInUp 0.6s ease-out forwards;
-        }
-        
-        .animate-fadeInUp {
-          animation: fadeInUp 0.6s ease-out forwards;
-        }
-      `}</style> */}
     </div>
   );
 };
